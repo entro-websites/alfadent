@@ -205,26 +205,147 @@
 
   /* ===== HERO ===== */
   .hero{
-    padding-top: 88px;
-    padding-bottom: 96px;
+    padding-top: 64px;
+    padding-bottom: 88px;
     border-bottom: 1px solid var(--border);
   }
 
-  .hero-inner{
-    max-width: 720px;
+  .hero-grid{
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .hero-copy{
+    max-width: 560px;
   }
 
   .hero h1{
     font-size: 52px;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.08;
     margin-bottom: 24px;
   }
 
-  .hero p{
+  .hero-lead{
     font-size: 19px;
     color: var(--muted);
     margin-bottom: 32px;
-    max-width: 60ch;
+    max-width: 46ch;
+  }
+
+  .hero-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .hero-note{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  .hero-note::before{
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dark);
+    flex: none;
+  }
+
+  .hero-media{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .hero-card{
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--white);
+  }
+
+  .hero-card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-card-main{
+    grid-column: span 2;
+    height: 320px;
+  }
+
+  .hero-card-photo{
+    height: 208px;
+  }
+
+  .hero-chip{
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    background: var(--white);
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 100px;
+  }
+
+  .hero-card-accent{
+    height: 208px;
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  .hero-card-accent h3{
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .hero-card-foot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .hero-arrow{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
   }
 
   /* ===== SECTION HEADER ===== */
@@ -496,6 +617,10 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; gap: 40px; }
+    .hero-copy{ max-width: none; }
+    .hero h1{ font-size: 44px; }
+
     .usluge-grid{ grid-template-columns: repeat(2, 1fr); }
     .galerija-grid{ grid-template-columns: 1fr 1fr; }
     .tim-grid{ grid-template-columns: 1fr 1fr; }
@@ -515,7 +640,16 @@
     }
 
     .hero h1{ font-size: 34px; }
-    .hero p{ font-size: 17px; }
+    .hero-lead{ font-size: 17px; }
+
+    .hero-card-main{ height: 240px; }
+    .hero-card-photo,
+    .hero-card-accent{ height: 180px; }
+    .hero-card-accent{ padding: 20px; }
+    .hero-card-accent h3{ font-size: 17px; }
+    .hero-card-foot{ font-size: 13px; }
+    .hero-arrow{ width: 32px; height: 32px; }
+    .hero-chip{ left: 12px; bottom: 12px; font-size: 11px; padding-left: 12px; padding-right: 12px; }
 
     .section-head h2{ font-size: 28px; }
 
@@ -564,11 +698,33 @@
 <main>
 
   <section class="hero" id="hero">
-    <div class="wrap hero-inner">
-      <span class="eyebrow">Alfadent · Trstenik i Kruševac</span>
-      <h1>Zub vas boli? Javite se, rešavamo to zajedno.</h1>
-      <p>Radimo u Trsteniku i Kruševcu i brinemo o zubima cele porodice, od prvog mlečnog zuba do krunice za baku. Kažete nam šta vas muči, mi objasnimo šta radimo i zašto, pre nego što uopšte počnemo.</p>
-      <a href="tel:+381377111100" class="btn">Pozovite ordinaciju</a>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Alfadent · Trstenik i Kruševac</span>
+        <h1>Zub vas boli? Javite se, rešavamo to zajedno.</h1>
+        <p class="hero-lead">Radimo u Trsteniku i Kruševcu i brinemo o zubima cele porodice, od prvog mlečnog zuba do krunice za baku. Kažete nam šta vas muči, mi objasnimo šta radimo i zašto, pre nego što uopšte počnemo.</p>
+        <div class="hero-actions">
+          <a href="tel:+381377111100" class="btn">Pozovite ordinaciju</a>
+          <a href="#usluge" class="btn btn-outline">Pogledajte usluge</a>
+        </div>
+        <div class="hero-note">Trstenik 037/711-100 · Kruševac 037/421-500</div>
+      </div>
+      <div class="hero-media">
+        <div class="hero-card hero-card-main">
+          <img src="assets/alfaslid3.jpg" alt="Stomatolog i asistentkinja analiziraju rendgenski snimak zuba">
+          <span class="hero-chip">Analiza snimka na licu mesta</span>
+        </div>
+        <div class="hero-card hero-card-photo">
+          <img src="assets/alfaslid4.jpg" alt="Stomatolog pregleda devojčicu u ordinaciji">
+          <span class="hero-chip">Dečja stomatologija</span>
+        </div>
+        <a href="#kontakt" class="hero-card hero-card-accent">
+          <h3>Prvi pregled i dogovor o terapiji</h3>
+          <span class="hero-card-foot">Zakažite termin
+            <span class="hero-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+          </span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -750,7 +906,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      © 2024 Alfadent. Sva prava zadržana.
+      © 2026 Alfadent. Sva prava zadržana.
     </div>
   </div>
 </footer>

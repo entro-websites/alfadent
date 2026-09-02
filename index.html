@@ -545,10 +545,16 @@
 
   /* ===== PROCES ===== */
   .proces-grid{
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 80px;
-    align-items: start;
+    width: 100%;
+    max-width: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .proces-copy,
+  .proces-list{
+    width: 48%;
   }
 
   .proces-copy h2{
@@ -1019,32 +1025,43 @@
 
   .utisci-viewport{
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
-    mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
   }
 
   .utisci-track{
+    --utisak-w: calc((min(1280px, 100vw) - 96px) / 3);
     display: flex;
     gap: 24px;
+    width: max-content;
     padding-top: 16px;
     padding-bottom: 16px;
     will-change: transform;
+    animation: utisci-scroll 45s linear infinite;
+  }
+
+  @keyframes utisci-scroll{
+    from{ transform: translateX(0); }
+    to{ transform: translateX(calc(-50% - 12px)); }
+  }
+
+  .utisci-viewport:hover .utisci-track,
+  .utisci-viewport.is-paused .utisci-track{
+    animation-play-state: paused;
   }
 
   .utisak{
-    flex: 0 0 calc(33.333% - 16px);
+    flex: none;
+    width: var(--utisak-w);
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 20px;
     padding: 32px;
-    opacity: 0.4;
-    transform: scale(0.96);
-    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
   }
 
-  .utisak-active{
-    opacity: 1;
-    transform: scale(1);
+  .utisak:hover{
+    border-color: var(--dark);
     box-shadow: 0 16px 40px rgba(43,43,43,0.10);
   }
 
@@ -1063,9 +1080,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    color: var(--muted);
+    background: var(--dark);
+    color: var(--white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1073,13 +1089,6 @@
     font-size: 14px;
     font-weight: 700;
     flex: none;
-    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
-  }
-
-  .utisak-active .utisak-avatar{
-    background: var(--dark);
-    border-color: var(--dark);
-    color: var(--white);
   }
 
   .utisak-autor h3{
@@ -1091,6 +1100,11 @@
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     color: var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .utisci-track{ animation: none; }
+    .utisci-viewport{ overflow-x: auto; }
   }
 
   /* ===== FOOTER ===== */
@@ -1159,13 +1173,15 @@
     .usluge-panel{ padding: 32px; }
     .usluge-panel h2{ font-size: 32px; }
     .usluge-grid{ grid-template-columns: repeat(2, 1fr); }
-    .proces-grid{ grid-template-columns: 1fr; gap: 40px; }
+    .proces-grid{ flex-direction: column; gap: 40px; }
+    .proces-copy,
+    .proces-list{ width: 100%; }
     .lokacije-grid{ grid-template-columns: 1fr; }
     .cta-panel{ grid-template-columns: 1fr; gap: 32px; padding: 32px; }
     .proces-copy h2{ font-size: 32px; }
     .tim-head{ flex-direction: column; align-items: flex-start; gap: 24px; }
     .tim-card{ flex: 0 0 calc(50% - 10px); }
-    .utisak{ flex: 0 0 calc(50% - 12px); }
+    .utisci-track{ --utisak-w: calc((min(1280px, 100vw) - 72px) / 2); }
   }
 
   @media (max-width: 768px){
@@ -1215,7 +1231,8 @@
     .proces-item{ gap: 16px; }
     .tim-card{ flex: 0 0 calc(100% - 4px); }
     .utisci-head h2{ font-size: 28px; }
-    .utisak{ flex: 0 0 100%; padding: 24px; }
+    .utisci-track{ --utisak-w: calc(100vw - 40px); }
+    .utisak{ padding: 24px; }
     .tim-card:hover{ transform: none; }
     .cta-panel{ padding: 24px; border-radius: 16px; }
     .cta-copy h2{ font-size: 26px; }
@@ -1579,6 +1596,56 @@
               </div>
             </div>
           </article>
+          <article class="utisak" aria-hidden="true">
+            <p>Godinama sam odlagala odlazak kod zubara. Ovde su mi prvo objasnili šta se radi i koliko traje, pa smo tek onda počeli. Prvi put sam izašla iz ordinacije bez knedle u grlu.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">JM</span>
+              <div>
+                <h3>Jelena M.</h3>
+                <span>Trstenik</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak" aria-hidden="true">
+            <p>Sina sam vodio na prvi pregled bez velikih očekivanja. Izašao je nasmejan i pitao kada idemo ponovo. To mi je dovoljna preporuka.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">MP</span>
+              <div>
+                <h3>Miloš P.</h3>
+                <span>Kruševac</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak" aria-hidden="true">
+            <p>Krunice su urađene tačno kako smo se dogovorili, a cenu sam znao pre nego što je bilo šta počelo. Nema naknadnih iznenađenja, što mi je najviše značilo.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">DS</span>
+              <div>
+                <h3>Dragan S.</h3>
+                <span>Trstenik</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak" aria-hidden="true">
+            <p>Zvala sam ujutru sa jakim bolom i primili su me isti dan. Sve je rešeno u jednoj poseti, mirno i bez žurbe.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">AN</span>
+              <div>
+                <h3>Ana N.</h3>
+                <span>Kruševac</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak" aria-hidden="true">
+            <p>Aparatić za ćerku smo stavili ovde posle dve konsultacije na drugim mestima. Jedini su seli sa nama i objasnili zašto baš tako, a ne drugačije.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">SV</span>
+              <div>
+                <h3>Snežana V.</h3>
+                <span>Trstenik</span>
+              </div>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -1628,69 +1695,12 @@
     hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
 
-  const utisciTrack = document.getElementById('utisciTrack');
   const utisciViewport = document.getElementById('utisciViewport');
 
-  if (utisciTrack && utisciViewport) {
-    const utisciGap = 24;
-    const utisciOriginal = Array.prototype.slice.call(utisciTrack.children);
-    const utisciTotal = utisciOriginal.length;
-    const utisciReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let utisciIndex = 0;
-    let utisciTimer = null;
-
-    utisciOriginal.slice(0, 3).forEach(function(card){
-      utisciTrack.appendChild(card.cloneNode(true));
-    });
-
-    function utisciVisible(){
-      if (window.innerWidth <= 768) return 1;
-      if (window.innerWidth <= 900) return 2;
-      return 3;
-    }
-
-    function utisciStep(){
-      return utisciTrack.children[0].getBoundingClientRect().width + utisciGap;
-    }
-
-    function utisciSetActive(){
-      const offset = Math.floor(utisciVisible() / 2);
-      Array.prototype.forEach.call(utisciTrack.children, function(card, i){
-        card.classList.toggle('utisak-active', i === utisciIndex + offset);
-      });
-    }
-
-    function utisciRender(animate){
-      utisciTrack.style.transition = animate ? 'transform 0.6s ease' : 'none';
-      utisciTrack.style.transform = 'translateX(' + (-utisciIndex * utisciStep()) + 'px)';
-      utisciSetActive();
-    }
-
-    function utisciNext(){
-      utisciIndex++;
-      utisciRender(true);
-      if (utisciIndex >= utisciTotal) {
-        window.setTimeout(function(){
-          utisciIndex = 0;
-          utisciRender(false);
-        }, 640);
-      }
-    }
-
-    utisciRender(false);
-    window.addEventListener('resize', function(){ utisciRender(false); });
-
-    if (!utisciReduce) {
-      utisciTimer = window.setInterval(utisciNext, 4000);
-
-      utisciViewport.addEventListener('mouseenter', function(){
-        window.clearInterval(utisciTimer);
-      });
-
-      utisciViewport.addEventListener('mouseleave', function(){
-        utisciTimer = window.setInterval(utisciNext, 4000);
-      });
-    }
+  if (utisciViewport) {
+    utisciViewport.addEventListener('touchstart', function(){
+      utisciViewport.classList.toggle('is-paused');
+    }, { passive: true });
   }
 
   const timGrid = document.getElementById('timGrid');

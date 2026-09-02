@@ -364,32 +364,183 @@
     font-size: 17px;
   }
 
-  /* ===== USLUGE GRID ===== */
-  .usluge-grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
+  /* ===== USLUGE PANEL ===== */
+  .usluge-panel{
+    background: var(--dark);
+    border-radius: 24px;
+    padding: 48px;
+    color: var(--white);
   }
 
-  .usluga-card{
-    background: var(--white);
-    padding: 36px 32px;
+  .usluge-head{
+    margin-bottom: 40px;
   }
 
-  .usluga-card svg{
+  .usluge-eyebrow{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
     margin-bottom: 20px;
   }
 
-  .usluga-card h3{
-    font-size: 19px;
+  .usluge-eyebrow::before{
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--white);
+    flex: none;
+  }
+
+  .usluge-title-row{
+    display: flex;
+    align-items: flex-end;
+    gap: 32px;
+  }
+
+  .usluge-panel h2{
+    color: var(--white);
+    font-size: 40px;
+    line-height: 1.15;
+    max-width: 16ch;
+  }
+
+  .usluge-rule{
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.25);
     margin-bottom: 12px;
   }
 
+  .usluge-lead{
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    margin-top: 20px;
+    max-width: 60ch;
+  }
+
+  .usluge-grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .usluga-card{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 260px;
+  }
+
+  .usluga-num{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+  }
+
+  .usluga-card h3{
+    color: var(--white);
+    font-size: 19px;
+    margin-bottom: 24px;
+  }
+
   .usluga-card p{
-    color: var(--muted);
-    font-size: 15.5px;
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    margin-top: auto;
+  }
+
+  .usluge-foot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 100px;
+    padding: 16px 16px 16px 24px;
+    margin-top: 16px;
+  }
+
+  .usluge-foot-left{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .avatars{
+    display: flex;
+    flex: none;
+  }
+
+  .avatars img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--dark);
+    margin-left: -12px;
+  }
+
+  .avatars img:first-child{
+    margin-left: 0;
+  }
+
+  .avatars img:nth-child(1){ object-position: 70% 25%; }
+  .avatars img:nth-child(2){ object-position: 55% 30%; }
+  .avatars img:nth-child(3){ object-position: 75% 60%; }
+
+  .usluge-foot-text{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    max-width: none;
+  }
+
+  .usluge-foot-text strong{
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  .usluge-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex: none;
+    background: var(--white);
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 100px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 8px;
+    padding-right: 24px;
+  }
+
+  .usluge-cta-icon{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
   }
 
   /* ===== GALERIJA ===== */
@@ -621,6 +772,8 @@
     .hero-copy{ max-width: none; }
     .hero h1{ font-size: 44px; }
 
+    .usluge-panel{ padding: 32px; }
+    .usluge-panel h2{ font-size: 32px; }
     .usluge-grid{ grid-template-columns: repeat(2, 1fr); }
     .galerija-grid{ grid-template-columns: 1fr 1fr; }
     .tim-grid{ grid-template-columns: 1fr 1fr; }
@@ -653,7 +806,21 @@
 
     .section-head h2{ font-size: 28px; }
 
+    .usluge-panel{ padding: 24px; border-radius: 16px; }
+    .usluge-panel h2{ font-size: 26px; max-width: none; }
+    .usluge-title-row{ gap: 16px; }
+    .usluge-lead{ font-size: 15px; }
     .usluge-grid{ grid-template-columns: 1fr; }
+    .usluga-card{ min-height: 0; }
+    .usluga-card h3{ margin-bottom: 16px; }
+    .usluga-card p{ margin-top: 0; }
+    .usluge-foot{
+      flex-direction: column;
+      align-items: flex-start;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .usluge-cta{ width: 100%; justify-content: center; padding-right: 8px; }
     .galerija-grid{ grid-template-columns: 1fr; }
     .tim-grid{ grid-template-columns: 1fr; }
     .lokacije-grid{ grid-template-columns: 1fr; }
@@ -701,7 +868,7 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Alfadent · Trstenik i Kruševac</span>
-        <h1>Zub vas boli? Javite se, rešavamo to zajedno.</h1>
+        <h1>Vaši zubi, bez straha i žurbe</h1>
         <p class="hero-lead">Radimo u Trsteniku i Kruševcu i brinemo o zubima cele porodice, od prvog mlečnog zuba do krunice za baku. Kažete nam šta vas muči, mi objasnimo šta radimo i zašto, pre nego što uopšte počnemo.</p>
         <div class="hero-actions">
           <a href="tel:+381377111100" class="btn">Pozovite ordinaciju</a>
@@ -730,41 +897,60 @@
 
   <section id="usluge">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Usluge</span>
-        <h2>Šta radimo</h2>
-        <p>Od redovne kontrole do implantata, sve pod istim krovom u obe ordinacije.</p>
-      </div>
-      <div class="usluge-grid">
-        <div class="usluga-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.5"><path d="M12 21c-1.5-3-3-6-3-10a3 3 0 0 1 6 0c0 4-1.5 7-3 10Z"/><path d="M9 5c-1-1.5-3-1.5-4 0-1 1.5-.5 3 .5 4"/><path d="M15 5c1-1.5 3-1.5 4 0 1 1.5.5 3-.5 4"/></svg>
-          <h3>Konzervativna stomatologija</h3>
-          <p>Sanacija karijesa i plombe u boji zuba, bez bušenja bez razloga.</p>
+      <div class="usluge-panel">
+        <div class="usluge-head">
+          <span class="usluge-eyebrow">6 usluga</span>
+          <div class="usluge-title-row">
+            <h2>Šta radimo</h2>
+            <span class="usluge-rule"></span>
+          </div>
+          <p class="usluge-lead">Od redovne kontrole do implantata, sve pod istim krovom u obe ordinacije.</p>
         </div>
-        <div class="usluga-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 13c1 1.5 2.5 2 4 2s3-.5 4-2"/><circle cx="9" cy="10" r="1" fill="#2b2b2b"/><circle cx="15" cy="10" r="1" fill="#2b2b2b"/></svg>
-          <h3>Estetska stomatologija</h3>
-          <p>Beljenje i fasete za osmeh koji rado pokažete na slikama.</p>
+        <div class="usluge-grid">
+          <div class="usluga-card">
+            <span class="usluga-num">01.</span>
+            <h3>Konzervativna stomatologija</h3>
+            <p>Sanacija karijesa i plombe u boji zuba, bez bušenja bez razloga.</p>
+          </div>
+          <div class="usluga-card">
+            <span class="usluga-num">02.</span>
+            <h3>Estetska stomatologija</h3>
+            <p>Beljenje i fasete za osmeh koji rado pokažete na slikama.</p>
+          </div>
+          <div class="usluga-card">
+            <span class="usluga-num">03.</span>
+            <h3>Ortodoncija</h3>
+            <p>Fiksni i mobilni aparatići, za decu i za odrasle koji su to odlagali godinama.</p>
+          </div>
+          <div class="usluga-card">
+            <span class="usluga-num">04.</span>
+            <h3>Oralna hirurgija</h3>
+            <p>Vađenje zuba mudrosti i ugradnja implanata, uz lokalnu anesteziju i mirnu ruku.</p>
+          </div>
+          <div class="usluga-card">
+            <span class="usluga-num">05.</span>
+            <h3>Dečja stomatologija</h3>
+            <p>Prvi pregled bez suza, sa igračkom u čekaonici i strpljenjem u ordinaciji.</p>
+          </div>
+          <div class="usluga-card">
+            <span class="usluga-num">06.</span>
+            <h3>Protetika</h3>
+            <p>Krunice, mostovi i proteze, napravljene po meri vaših zuba, ne po šablonu.</p>
+          </div>
         </div>
-        <div class="usluga-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.5"><path d="M4 8h16"/><path d="M4 12h16"/><path d="M4 16h10"/></svg>
-          <h3>Ortodoncija</h3>
-          <p>Fiksni i mobilni aparatići, za decu i za odrasle koji su to odlagali godinama.</p>
-        </div>
-        <div class="usluga-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.5"><path d="M6 3v6c0 3 2 5 6 5s6-2 6-5V3"/><path d="M12 14v7"/></svg>
-          <h3>Oralna hirurgija</h3>
-          <p>Vađenje zuba mudrosti i ugradnja implanata, uz lokalnu anesteziju i mirnu ruku.</p>
-        </div>
-        <div class="usluga-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M6 21c0-3.5 2.5-6 6-6s6 2.5 6 6"/></svg>
-          <h3>Dečja stomatologija</h3>
-          <p>Prvi pregled bez suza, sa igračkom u čekaonici i strpljenjem u ordinaciji.</p>
-        </div>
-        <div class="usluga-card">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2b2b2b" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/></svg>
-          <h3>Protetika</h3>
-          <p>Krunice, mostovi i proteze, napravljene po meri vaših zuba, ne po šablonu.</p>
+        <div class="usluge-foot">
+          <div class="usluge-foot-left">
+            <span class="avatars">
+              <img src="assets/alfaslid3.jpg" alt="Stomatolog i asistentkinja u ordinaciji">
+              <img src="assets/alfaslid4.jpg" alt="Pregled deteta u ordinaciji">
+              <img src="assets/alfafs1.jpg" alt="Stomatološki pregled">
+            </span>
+            <span class="usluge-foot-text">Pridružite se pacijentima koji <strong>biraju sigurnost</strong></span>
+          </div>
+          <a href="tel:+381377111100" class="usluge-cta">
+            <span class="usluge-cta-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
+            Zakažite pregled
+          </a>
         </div>
       </div>
     </div>

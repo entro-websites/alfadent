@@ -992,48 +992,104 @@
     color: var(--muted);
   }
 
-  /* ===== KONTAKT ===== */
-  .kontakt-grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-    margin-top: 48px;
+  /* ===== UTISCI ===== */
+  #utisci{
+    overflow: hidden;
   }
 
-  .kontakt-card{
-    border: 1px solid var(--border);
-    padding-top: 32px;
-    padding-bottom: 32px;
-    padding-left: 32px;
-    padding-right: 32px;
-    background: var(--white);
-  }
-
-  .kontakt-card h3{
-    font-size: 20px;
-    margin-bottom: 16px;
-  }
-
-  .kontakt-card a.phone{
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 22px;
-    margin-bottom: 8px;
-  }
-
-  .kontakt-card .email{
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  .kontakt-cta{
-    margin-top: 48px;
+  .utisci-head{
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
     text-align: center;
   }
 
-  .kontakt-cta p{
-    margin: 0 auto 20px auto;
+  .utisci-head h2{
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+
+  .utisci-head p{
+    color: var(--muted);
+    font-size: 17px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .utisci-viewport{
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+  }
+
+  .utisci-track{
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    will-change: transform;
+  }
+
+  .utisak{
+    flex: 0 0 calc(33.333% - 16px);
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    opacity: 0.4;
+    transform: scale(0.96);
+    transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
+  }
+
+  .utisak-active{
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 16px 40px rgba(43,43,43,0.10);
+  }
+
+  .utisak p{
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .utisak-autor{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .utisak-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    flex: none;
+    transition: background 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+  }
+
+  .utisak-active .utisak-avatar{
+    background: var(--dark);
+    border-color: var(--dark);
+    color: var(--white);
+  }
+
+  .utisak-autor h3{
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .utisak-autor span{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
     color: var(--muted);
   }
 
@@ -1109,6 +1165,7 @@
     .proces-copy h2{ font-size: 32px; }
     .tim-head{ flex-direction: column; align-items: flex-start; gap: 24px; }
     .tim-card{ flex: 0 0 calc(50% - 10px); }
+    .utisak{ flex: 0 0 calc(50% - 12px); }
   }
 
   @media (max-width: 768px){
@@ -1157,6 +1214,8 @@
     .proces-icon{ width: 40px; height: 40px; }
     .proces-item{ gap: 16px; }
     .tim-card{ flex: 0 0 calc(100% - 4px); }
+    .utisci-head h2{ font-size: 28px; }
+    .utisak{ flex: 0 0 100%; padding: 24px; }
     .tim-card:hover{ transform: none; }
     .cta-panel{ padding: 24px; border-radius: 16px; }
     .cta-copy h2{ font-size: 26px; }
@@ -1166,7 +1225,6 @@
     .lokacija-media img{ min-height: 0; height: 200px; }
     .lokacija-body{ padding: 0 8px 8px 8px; }
     .lokacija-btn{ margin-top: 0; }
-    .kontakt-grid{ grid-template-columns: 1fr; }
 
     .footer-top{ flex-direction: column; }
     .footer-links{ gap: 32px; }
@@ -1184,7 +1242,7 @@
       <a href="#usluge">Usluge</a>
       <a href="#lokacije">Lokacije</a>
       <a href="#tim">Tim</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#cta">Kontakt</a>
     </nav>
     <div class="nav-cta">
       <a href="tel:+381377111100" class="btn">Zakažite pregled</a>
@@ -1199,7 +1257,7 @@
     <a href="#usluge">Usluge</a>
     <a href="#lokacije">Lokacije</a>
     <a href="#tim">Tim</a>
-    <a href="#kontakt">Kontakt</a>
+    <a href="#cta">Kontakt</a>
     <a href="tel:+381377111100" class="btn">Zakažite pregled</a>
   </div>
 </header>
@@ -1227,7 +1285,7 @@
           <img src="assets/alfaslid4.jpg" alt="Stomatolog pregleda devojčicu u ordinaciji">
           <span class="hero-chip">Dečja stomatologija</span>
         </div>
-        <a href="#kontakt" class="hero-card hero-card-accent">
+        <a href="#cta" class="hero-card hero-card-accent">
           <h3>Prvi pregled i dogovor o terapiji</h3>
           <span class="hero-card-foot">Zakažite termin
             <span class="hero-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></span>
@@ -1460,28 +1518,68 @@
     </div>
   </section>
 
-  <section id="kontakt">
+
+
+  <section id="utisci">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Kontakt</span>
-        <h2>Zakažite pregled</h2>
-        <p>Najbrži način je poziv telefonom. Recite nam šta vas muči i kada vam odgovara, a mi nađemo termin.</p>
+      <div class="utisci-head">
+        <span class="eyebrow">Utisci</span>
+        <h2>Šta kažu naši pacijenti</h2>
+        <p>Ljudi nam se vraćaju zato što znaju šta ih čeka pre nego što sednu u stolicu.</p>
       </div>
-      <div class="kontakt-grid">
-        <div class="kontakt-card">
-          <h3>Trstenik</h3>
-          <a href="tel:+381377111100" class="phone">037/711-100</a>
-          <span class="email">[email protected]</span>
+      <div class="utisci-viewport" id="utisciViewport">
+        <div class="utisci-track" id="utisciTrack">
+          <article class="utisak">
+            <p>Godinama sam odlagala odlazak kod zubara. Ovde su mi prvo objasnili šta se radi i koliko traje, pa smo tek onda počeli. Prvi put sam izašla iz ordinacije bez knedle u grlu.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">JM</span>
+              <div>
+                <h3>Jelena M.</h3>
+                <span>Trstenik</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak">
+            <p>Sina sam vodio na prvi pregled bez velikih očekivanja. Izašao je nasmejan i pitao kada idemo ponovo. To mi je dovoljna preporuka.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">MP</span>
+              <div>
+                <h3>Miloš P.</h3>
+                <span>Kruševac</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak">
+            <p>Krunice su urađene tačno kako smo se dogovorili, a cenu sam znao pre nego što je bilo šta počelo. Nema naknadnih iznenađenja, što mi je najviše značilo.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">DS</span>
+              <div>
+                <h3>Dragan S.</h3>
+                <span>Trstenik</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak">
+            <p>Zvala sam ujutru sa jakim bolom i primili su me isti dan. Sve je rešeno u jednoj poseti, mirno i bez žurbe.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">AN</span>
+              <div>
+                <h3>Ana N.</h3>
+                <span>Kruševac</span>
+              </div>
+            </div>
+          </article>
+          <article class="utisak">
+            <p>Aparatić za ćerku smo stavili ovde posle dve konsultacije na drugim mestima. Jedini su seli sa nama i objasnili zašto baš tako, a ne drugačije.</p>
+            <div class="utisak-autor">
+              <span class="utisak-avatar">SV</span>
+              <div>
+                <h3>Snežana V.</h3>
+                <span>Trstenik</span>
+              </div>
+            </div>
+          </article>
         </div>
-        <div class="kontakt-card">
-          <h3>Kruševac</h3>
-          <a href="tel:+381374215500" class="phone">037/421-500</a>
-          <span class="email">[email protected]</span>
-        </div>
-      </div>
-      <div class="kontakt-cta">
-        <p>Radimo radnim danima od 8 do 20h, subotom od 8 do 14h.</p>
-        <a href="tel:+381377111100" class="btn">Pozovite i zakažite termin</a>
       </div>
     </div>
   </section>
@@ -1501,7 +1599,7 @@
           <a href="#usluge">Usluge</a>
           <a href="#lokacije">Lokacije</a>
           <a href="#tim">Tim</a>
-          <a href="#kontakt">Kontakt</a>
+          <a href="#cta">Kontakt</a>
         </div>
         <div class="footer-col">
           <h4>Trstenik</h4>
@@ -1529,6 +1627,71 @@
     const isOpen = navbar.classList.toggle('open');
     hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
+
+  const utisciTrack = document.getElementById('utisciTrack');
+  const utisciViewport = document.getElementById('utisciViewport');
+
+  if (utisciTrack && utisciViewport) {
+    const utisciGap = 24;
+    const utisciOriginal = Array.prototype.slice.call(utisciTrack.children);
+    const utisciTotal = utisciOriginal.length;
+    const utisciReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let utisciIndex = 0;
+    let utisciTimer = null;
+
+    utisciOriginal.slice(0, 3).forEach(function(card){
+      utisciTrack.appendChild(card.cloneNode(true));
+    });
+
+    function utisciVisible(){
+      if (window.innerWidth <= 768) return 1;
+      if (window.innerWidth <= 900) return 2;
+      return 3;
+    }
+
+    function utisciStep(){
+      return utisciTrack.children[0].getBoundingClientRect().width + utisciGap;
+    }
+
+    function utisciSetActive(){
+      const offset = Math.floor(utisciVisible() / 2);
+      Array.prototype.forEach.call(utisciTrack.children, function(card, i){
+        card.classList.toggle('utisak-active', i === utisciIndex + offset);
+      });
+    }
+
+    function utisciRender(animate){
+      utisciTrack.style.transition = animate ? 'transform 0.6s ease' : 'none';
+      utisciTrack.style.transform = 'translateX(' + (-utisciIndex * utisciStep()) + 'px)';
+      utisciSetActive();
+    }
+
+    function utisciNext(){
+      utisciIndex++;
+      utisciRender(true);
+      if (utisciIndex >= utisciTotal) {
+        window.setTimeout(function(){
+          utisciIndex = 0;
+          utisciRender(false);
+        }, 640);
+      }
+    }
+
+    utisciRender(false);
+    window.addEventListener('resize', function(){ utisciRender(false); });
+
+    if (!utisciReduce) {
+      utisciTimer = window.setInterval(utisciNext, 4000);
+
+      utisciViewport.addEventListener('mouseenter', function(){
+        window.clearInterval(utisciTimer);
+      });
+
+      utisciViewport.addEventListener('mouseleave', function(){
+        utisciTimer = window.setInterval(utisciNext, 4000);
+      });
+    }
+  }
 
   const timGrid = document.getElementById('timGrid');
   const timNav = document.getElementById('timNav');

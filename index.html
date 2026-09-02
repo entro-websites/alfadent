@@ -607,6 +607,7 @@
     align-items: center;
     justify-content: center;
     flex: none;
+    transition: background-color 0.45s ease, border-color 0.45s ease, color 0.45s ease;
   }
 
   .proces-item-active .proces-icon{
@@ -617,6 +618,7 @@
 
   .proces-text{
     padding-top: 4px;
+    flex: 1;
   }
 
   .proces-item h3{
@@ -627,7 +629,7 @@
   .proces-item p{
     color: var(--muted);
     font-size: 15px;
-    max-width: 46ch;
+    max-width: none;
   }
 
   /* ===== LOKACIJE ===== */
@@ -718,42 +720,276 @@
     margin-top: auto;
   }
 
-  /* ===== TIM ===== */
-  .tim-grid{
+  /* ===== CTA ===== */
+  .cta-panel{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
-  }
-
-  .tim-card img,
-  .tim-card .placeholder-block{
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
+    align-items: center;
+    background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 4px;
-    margin-bottom: 20px;
+    border-radius: 24px;
+    padding: 48px;
   }
 
-  .tim-card h3{
-    font-size: 19px;
-    margin-bottom: 4px;
+  .cta-copy h2{
+    font-size: 32px;
+    margin-bottom: 16px;
   }
 
-  .tim-role{
+  .cta-copy p{
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 24px;
+    max-width: 48ch;
+  }
+
+  .cta-note{
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 600;
     color: var(--muted);
+  }
+
+  .cta-note::before{
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--dark);
+    flex: none;
+  }
+
+  .cta-box{
+    background: var(--dark);
+    border-radius: 20px;
+    padding: 24px;
+    color: var(--white);
+  }
+
+  .cta-box-title{
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    margin-bottom: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 16px;
+  }
+
+  .cta-options{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cta-option{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .cta-option:hover{
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.3);
+  }
+
+  .cta-option h3{
+    color: var(--white);
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .cta-option-adresa{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.6);
+  }
+
+  .cta-option-tel{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    white-space: nowrap;
+  }
+
+  /* ===== TIM ===== */
+  #tim{
+    background: var(--dark);
+    border-bottom-color: rgba(255,255,255,0.12);
+  }
+
+  #tim .eyebrow{
+    color: rgba(255,255,255,0.6);
+  }
+
+  #tim h2{
+    color: var(--white);
+  }
+
+  #tim .section-head p{
+    color: rgba(255,255,255,0.6);
+  }
+
+  .tim-head{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 40px;
+  }
+
+  .tim-head .section-head{
+    margin-bottom: 0;
+  }
+
+  .tim-nav{
+    display: flex;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .tim-arrow{
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .tim-arrow:hover{
+    background: rgba(255,255,255,0.1);
+  }
+
+  .tim-arrow-next{
+    background: var(--white);
+    border-color: var(--white);
+    color: var(--dark);
+  }
+
+  .tim-arrow-next:hover{
+    background: rgba(255,255,255,0.85);
+  }
+
+  .tim-grid{
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .tim-grid::-webkit-scrollbar{
+    display: none;
+  }
+
+  .tim-card{
+    flex: 0 0 calc(33.333% - 14px);
+    scroll-snap-align: start;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 12px;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .tim-card:hover{
+    background: var(--white);
+    border-color: var(--white);
+    transform: scale(1.04);
+  }
+
+  .tim-photo{
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .tim-photo img,
+  .tim-placeholder{
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    max-height: 420px;
+    object-fit: cover;
     display: block;
   }
 
+  .tim-placeholder{
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 16px;
+  }
+
+  .tim-info{
+    padding-top: 16px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .tim-role{
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .tim-card h3{
+    color: var(--white);
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
   .tim-card p{
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+  }
+
+  .tim-card:hover h3{
+    color: var(--dark);
+  }
+
+  .tim-card:hover .tim-role,
+  .tim-card:hover p{
     color: var(--muted);
-    font-size: 15px;
+  }
+
+  .tim-card:hover .tim-placeholder{
+    background: var(--bg);
+    border-color: var(--border);
+    color: var(--muted);
   }
 
   /* ===== KONTAKT ===== */
@@ -869,8 +1105,10 @@
     .usluge-grid{ grid-template-columns: repeat(2, 1fr); }
     .proces-grid{ grid-template-columns: 1fr; gap: 40px; }
     .lokacije-grid{ grid-template-columns: 1fr; }
+    .cta-panel{ grid-template-columns: 1fr; gap: 32px; padding: 32px; }
     .proces-copy h2{ font-size: 32px; }
-    .tim-grid{ grid-template-columns: 1fr 1fr; }
+    .tim-head{ flex-direction: column; align-items: flex-start; gap: 24px; }
+    .tim-card{ flex: 0 0 calc(50% - 10px); }
   }
 
   @media (max-width: 768px){
@@ -918,7 +1156,11 @@
     .proces-copy h2{ font-size: 26px; }
     .proces-icon{ width: 40px; height: 40px; }
     .proces-item{ gap: 16px; }
-    .tim-grid{ grid-template-columns: 1fr; }
+    .tim-card{ flex: 0 0 calc(100% - 4px); }
+    .tim-card:hover{ transform: none; }
+    .cta-panel{ padding: 24px; border-radius: 16px; }
+    .cta-copy h2{ font-size: 26px; }
+    .cta-box{ padding: 20px; }
     .lokacija-card{ flex-direction: column; gap: 16px; }
     .lokacija-media{ width: 100%; max-width: none; }
     .lokacija-media img{ min-height: 0; height: 200px; }
@@ -1073,7 +1315,7 @@
             <p>Zovete ordinaciju, kažete šta vas muči i nađemo termin koji vam odgovara.</p>
           </div>
         </div>
-        <div class="proces-item proces-item-active">
+        <div class="proces-item">
           <span class="proces-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg></span>
           <div class="proces-text">
             <h3>Pregled i snimak</h3>
@@ -1138,32 +1380,82 @@
     </div>
   </section>
 
+  <section id="cta">
+    <div class="wrap">
+      <div class="cta-panel">
+        <div class="cta-copy">
+          <span class="eyebrow">Zakazivanje</span>
+          <h2>Javite se, ostalo je na nama</h2>
+          <p>Zovite ordinaciju koja vam je bliža. Kažete šta vas muči i kada možete, a mi nađemo termin i objasnimo šta vas čeka pre nego što dođete.</p>
+          <div class="cta-note">Pon - pet 08-20h, subota 08-14h</div>
+        </div>
+        <div class="cta-box">
+          <span class="cta-box-title">Izaberite ordinaciju</span>
+          <div class="cta-options">
+            <a href="tel:+381377111100" class="cta-option">
+              <div>
+                <h3>Trstenik</h3>
+                <span class="cta-option-adresa">Kneza Miloša 12</span>
+              </div>
+              <span class="cta-option-tel">037/711-100</span>
+            </a>
+            <a href="tel:+381374215500" class="cta-option">
+              <div>
+                <h3>Kruševac</h3>
+                <span class="cta-option-adresa">Topličina 45</span>
+              </div>
+              <span class="cta-option-tel">037/421-500</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="tim">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Tim</span>
-        <h2>Ko će vam pregledati zube</h2>
-        <p>Tri stomatologa, dva grada, isti pristup - kažemo vam stanje zuba onako kako jeste i predlažemo ono što bismo uradili sebi.</p>
+      <div class="tim-head">
+        <div class="section-head">
+          <span class="eyebrow">Tim</span>
+          <h2>Ko će vam pregledati zube</h2>
+          <p>Tri stomatologa, dva grada, isti pristup - kažemo vam stanje zuba onako kako jeste i predlažemo ono što bismo uradili sebi.</p>
+        </div>
+        <div class="tim-nav" id="timNav">
+          <button class="tim-arrow" id="timPrev" aria-label="Prethodni članovi tima"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+          <button class="tim-arrow tim-arrow-next" id="timNext" aria-label="Sledeći članovi tima"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+        </div>
       </div>
-      <div class="tim-grid">
-        <div class="tim-card">
-          <img src="assets/alfaslid4.jpg" alt="Dr Maja Milivojević pregleda malog pacijenta">
-          <span class="tim-role">Dečja stomatologija</span>
-          <h3>dr Maja Milivojević</h3>
-          <p>Radi sa decom koja se plaše stomatologa i uglavnom uspe da ih nasmeje pre kraja pregleda.</p>
-        </div>
-        <div class="tim-card">
-          <div class="placeholder-block">FOTOGRAFIJA DR NIKOLE JOVANOVIĆA</div>
-          <span class="tim-role">Oralna hirurgija</span>
-          <h3>dr Nikola Jovanović</h3>
-          <p>Vadi zube mudrosti i ugrađuje implante, radi i u Trsteniku i u Kruševcu.</p>
-        </div>
-        <div class="tim-card">
-          <div class="placeholder-block">FOTOGRAFIJA DR ANE PETROVIĆ</div>
-          <span class="tim-role">Estetska stomatologija i protetika</span>
-          <h3>dr Ana Petrović</h3>
-          <p>Pravi krunice i mostove koji izgledaju kao vaši rođeni zubi, ne kao dodatak.</p>
-        </div>
+      <div class="tim-grid" id="timGrid">
+        <article class="tim-card">
+          <div class="tim-photo">
+            <img src="assets/alfaslid4.jpg" alt="Dr Maja Milivojević pregleda malog pacijenta">
+          </div>
+          <div class="tim-info">
+            <span class="tim-role">Dečja stomatologija</span>
+            <h3>dr Maja Milivojević</h3>
+            <p>Radi sa decom koja se plaše stomatologa i uglavnom uspe da ih nasmeje pre kraja pregleda.</p>
+          </div>
+        </article>
+        <article class="tim-card">
+          <div class="tim-photo">
+            <div class="tim-placeholder" role="img" aria-label="Fotografija dr Nikole Jovanovića">Fotografija dr Nikole Jovanovića</div>
+          </div>
+          <div class="tim-info">
+            <span class="tim-role">Oralna hirurgija</span>
+            <h3>dr Nikola Jovanović</h3>
+            <p>Vadi zube mudrosti i ugrađuje implante, radi i u Trsteniku i u Kruševcu.</p>
+          </div>
+        </article>
+        <article class="tim-card">
+          <div class="tim-photo">
+            <div class="tim-placeholder" role="img" aria-label="Fotografija dr Ane Petrović">Fotografija dr Ane Petrović</div>
+          </div>
+          <div class="tim-info">
+            <span class="tim-role">Estetska stomatologija i protetika</span>
+            <h3>dr Ana Petrović</h3>
+            <p>Pravi krunice i mostove koji izgledaju kao vaši rođeni zubi, ne kao dodatak.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -1237,6 +1529,62 @@
     const isOpen = navbar.classList.toggle('open');
     hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   });
+
+  const timGrid = document.getElementById('timGrid');
+  const timNav = document.getElementById('timNav');
+
+  if (timGrid && timNav) {
+    document.getElementById('timPrev').addEventListener('click', function(){
+      timGrid.scrollBy({ left: -timGrid.clientWidth / 2, behavior: 'smooth' });
+    });
+
+    document.getElementById('timNext').addEventListener('click', function(){
+      timGrid.scrollBy({ left: timGrid.clientWidth / 2, behavior: 'smooth' });
+    });
+
+    function updateTimNav(){
+      timNav.style.display = timGrid.scrollWidth > timGrid.clientWidth + 4 ? 'flex' : 'none';
+    }
+
+    updateTimNav();
+    window.addEventListener('resize', updateTimNav);
+  }
+
+  const procesSection = document.getElementById('proces');
+
+  if (procesSection) {
+    const procesItems = Array.prototype.slice.call(procesSection.querySelectorAll('.proces-item'));
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function paintProces(){
+      const order = procesItems.slice();
+      for (let i = order.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        const tmp = order[i];
+        order[i] = order[j];
+        order[j] = tmp;
+      }
+      order.forEach(function(item, i){
+        window.setTimeout(function(){
+          item.classList.add('proces-item-active');
+        }, reduceMotion ? 0 : i * 220);
+      });
+    }
+
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      const procesObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            paintProces();
+            procesObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
+      procesObserver.observe(procesSection);
+    } else {
+      paintProces();
+    }
+  }
 
   document.querySelectorAll('.mobile-panel a').forEach(function(link){
     link.addEventListener('click', function(){
